@@ -150,26 +150,13 @@ mentionned.send(` :credit_card: | Transfer Receipt \`\`\`You have received ${arg
   
   
   
-   client.on("message", message => {
-    if (message.content === "Rhelp") {
-     const embed = new Discord.RichEmbed() 
-         .setColor("#00FF00")
-         .setDescription(`**❓❔❗️❕وش مميزات البوت❗️❕❓❔**
-        **__1-__:books:🧐 بوت عربي🧐:books:
-         __2-__:white_check_mark: :part_alternation_mark:️ استخدامه جدا سهل:part_alternation_mark:️:white_check_mark: 
-         __3-__:gear:️صيانه كل يوم:gear:️
-         __4-__:money_with_wings: مجاني :money_with_wings:**`)
-   message.author.sendEmbed(embed)
-   
-   }
-   });
+
   
 
   
    
   
-  
-  
+
    client.on("message", message => {
       if (message.content === "Rhelp") {
        const embed = new Discord.RichEmbed() 
