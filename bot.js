@@ -4,7 +4,7 @@ const moment = require("moment");
 const fs = require("fs");
 const prefix = "R";
 client.on('ready', () => {
-    client.user.setGame(`Reay Soon | جاهز قريبا`,"http://twitch.tv/y04zgamer")
+    client.user.setGame(`Ready Soon | جاهز قريبا`,"http://twitch.tv/y04zgamer")
     client.user.setStatus("dnd")
  });
 
