@@ -572,9 +572,8 @@ setTimeout(() => {
     });
 
 
-var prefix = "R";
 client.on('message', message => {
-         if (message.content === prefix + "dt") {
+         if (message.content === prefix + "Rdt") {
          if (!message.channel.guild) return message.reply('** This command only for servers **');  
          var currentTime = new Date(),
             hours = currentTime.getHours() + 4 ,
