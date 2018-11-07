@@ -161,7 +161,7 @@ mentionned.send(` :credit_card: | Transfer Receipt \`\`\`You have received ${arg
       if (message.content === "Rhelp") {
        const embed = new Discord.RichEmbed() 
            .setColor("#FF0000")
-           .setDescription(`**🕴🏾الاوامر العامة|Public Commands🕴🏾**
+           .setDescription(`**🕴 🏾الاوامر العامة|Public Commands 🕴🏾**
   ** __Rid__** مـعـلومأت عـنـك
   -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
   **__Rbot__** مـعـلومـات الـبـوت
@@ -184,11 +184,11 @@ mentionned.send(` :credit_card: | Transfer Receipt \`\`\`You have received ${arg
   -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
   **قريبأ**
   -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-**قريبأ**
+  **قريبأ**
   -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-**قريبأ**
+  **قريبأ**
   -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
+  **قريبأ**
   -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- `)
      message.author.sendEmbed(embed)
      
@@ -198,7 +198,28 @@ mentionned.send(` :credit_card: | Transfer Receipt \`\`\`You have received ${arg
   
   
   
+   client.on("message", message => {
+      if (message.content === "Rhelp") {
+       const embed = new Discord.RichEmbed() 
+           .setColor("#57FEFF")
+           .setDescription(`**🎮 Games | الالعاب 🎮**
 
+  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+  **__Rroll__** قـرعـة مـن 1 الـى 100
+  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+   **قريبأ**
+  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+  **قريبأ**
+  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+  **قريبأ**
+  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+  **قريبأ**
+  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+  **قريبأ**
+   -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-`)
+     message.author.sendEmbed(embed)
+     }
+     });
   
   
   
@@ -206,7 +227,7 @@ mentionned.send(` :credit_card: | Transfer Receipt \`\`\`You have received ${arg
       if (message.content === "Rhelp") {
        const embed = new Discord.RichEmbed() 
            .setColor("#57FEFF")
-           .setDescription(`**⚙️اوامر الادارة|Administrator⚙️**
+           .setDescription(`**⚙️ اوامر الادارة |Administrator ⚙️**
 
   -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
   **__Rban__** حـظـر الـعـضـو مـن الـسـيـرفـر
@@ -572,6 +593,20 @@ setTimeout(() => {
     });
 
 
-
+client.on('message', function(message) {
+	var prefix = "R"
+    if(message.content.startsWith(prefix + 'roll')) {
+        let args = message.content.split(" ").slice(1);
+        if (!args[0]) {
+            message.channel.send('**ضع رقم**');
+            return;
+            }
+    message.channel.send(Math.floor(Math.random() * args.join(' ')));
+            if (!args[0]) {
+          message.edit('1')
+          return;
+        }
+    }
+});
 
 client.login(process.env.BOT_TOKEN);
