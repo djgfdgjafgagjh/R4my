@@ -412,27 +412,39 @@ client.on("message", message => {
 
 
 
-client.on("message", message => {
-var prefix = "R"
-    var args = message.content.substring(prefix.length).split(" ");
-    if (message.content.startsWith(prefix + "clear")) {
-        if(!message.channel.guild) return message.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**⚠  لا يوجد لديك صلاحية لمسح الشات**');
+client.on('message', message => {
+	var prefix = "R";
+   if(!message.channel.guild) return;
+if(message.content.startsWith(prefix + 'clear')) {
+if(!message.channel.guild) return message.channel.send('**This Command is Just For Servers**').then(m => m.delete(5000));
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return      message.channel.send('**ليس لديك صلاحية* `MANAGE_MESSAGES`' );
+let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
+let request = `Requested By ${message.author.username}`;
+message.channel.send(`**Are You sure you want to clear the chat?**`).then(msg => {
+msg.react('✅')
+.then(() => msg.react('❌'))
+.then(() =>msg.react('✅'))
+
+let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
+
+let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
+let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
+reaction1.on("collect", r => {
+message.channel.send(`سيتم مسح الشات`).then(m => m.delete(5000));
 var msg;
-msg = parseInt();
+        msg = parseInt();
 
-message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
-message.channel.sendMessage("", {embed: {
-title: "``تــم مسح الشات ``",
-color: 0x06DF00,
-footer: {
-  
-}
-}}).then(msg => {msg.delete(3000)});
-                  }
+      message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
+      message.channel.sendMessage("", {embed: {
+        title: "`` تم مسح الشات ``",
+        color: 0x06DF00,
+        footer: {
 
+        }
+      }}).then(msg => {msg.delete(3000)});
 
-});
+})
 
 
 
